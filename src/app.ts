@@ -4,8 +4,8 @@ const f = (str : string) => { return "coucou";}
 askinput(f)
 console.log(calc)
 
-import  * as m_sdb from  './serverdb'
-import  * as  m_s from  './server'
+require( './serverdb')
+require('./server')
 require(  './event.js')
 const fp = require(  './fp.js')
 
