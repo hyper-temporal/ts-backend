@@ -1,6 +1,8 @@
 const server = require ('./server.js')
 
-let myEmitter = require ('./event.js')
+const ev = require ('./event.js')
+ev()
+
 // myEmitter.emit('newSale', 599.99)
 let fp = require ('./fp.js')
 
@@ -13,16 +15,10 @@ const askQuestion = require ('./askinput.js')
 // .then(x => { 
 //     console.log(x); 
 // });
-
-
-
 const fstest = require ('./fileandco.js')
-
 const greeting = require('./greetings.js')
 const lpatho  = require('./path.js')
 console.log(lpatho)
-
-
 const person = require('./person.js')
 greeting(person.name)
 

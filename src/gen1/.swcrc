@@ -1,9 +1,0 @@
-{
-    "env": {
-      "targets": {
-        "chrome": "79"
-      },
-      "mode": "entry",
-      "coreJs": "3.22"
-    }
-  }

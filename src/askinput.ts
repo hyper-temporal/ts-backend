@@ -8,7 +8,10 @@ import { createFile, createFileString} from "./createfile";
 
 const readline = require('readline')
 
-export default (f: (param: string) => string) => {
+export default (
+  defaultProcess: (param: string) => void,
+  otherPrsocess: (param: string) => void
+  ) => {
   let str = ""
   const rl = readline.createInterface({
     input: process.stdin,
@@ -20,14 +23,10 @@ export default (f: (param: string) => string) => {
   rl.on('line', (line: string) => {
     switch (line.trim()) {
       case 'hello':
-        console.log('world!');
+        otherPrsocess(str)
         break;
       default:
-        console.log(`last time it was :'${str}'`);
-        str = line.trim()
-        let fstr= str + path.sep + randomstring(123)
-        createFileString(fstr)
-        console.log(`but still, you a '${f(str)}'`)
+        defaultProcess(str)
         break;
     }
     rl.prompt();

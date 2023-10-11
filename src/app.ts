@@ -12,9 +12,29 @@ const parsfloats = map(
 console.log(parsints)
 console.log(parsfloats)
 
+
+import myEmitter from './event'
 import  askinput from "./askinput";
-const f = (str : string) => { return "coucou";}
-askinput(f)
+import path from "path";
+import randomstring from "./randomstring";
+import { createFile, createFileString} from "./createfile";
+
+askinput(
+    (line : string) => {
+        myEmitter.emit('newSale', 123)
+        const str = line.trim()
+        let fstr= str + path.sep + randomstring(123)
+        createFileString(fstr)
+        console.log(`but still, you a ${"coucou"}`)
+    },
+    (line : string) => {
+        console.log(`such a ${"coucou"}`)
+
+    }
+)
+
+
+
 
 require( './serverdb')
 require( './server')
