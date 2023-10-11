@@ -4,11 +4,11 @@ const f = (str : string) => { return "coucou";}
 askinput(f)
 console.log(calc)
 
-require ('./serverdb.ts')
-require ('./server.ts')
-require ('./event.js')
+import  * as m_sdb from  './serverdb'
+import  * as  m_s from  './server'
+import  * as  m_ev from  './event.js'
 // myEmitter.emit('newSale', 599.99)
-let fp = require ('./fp.js')
+import  * as  fp from  './fp.js'
 
 console.log(fp.e)
 console.log(fp.fp(123))
