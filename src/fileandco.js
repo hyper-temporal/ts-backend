@@ -1,8 +1,9 @@
 //synchrone
 const fs = require('fs')
-const crea = require('./createfile.js')
+const cf = require('./createfile.js')
 
-
+if (!fs.existsSync( 'info.txt'))
+    cf.createFileString("yo")
 const data = fs.readFileSync('info.txt', 'utf-8')
 console.log(data) // file content
 console.log('Le fichier a été lu')

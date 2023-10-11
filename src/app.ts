@@ -6,9 +6,8 @@ console.log(calc)
 
 import  * as m_sdb from  './serverdb'
 import  * as  m_s from  './server'
-import  * as  m_ev from  './event.js'
-// myEmitter.emit('newSale', 599.99)
-import  * as  fp from  './fp.js'
+require(  './event.js')
+const fp = require(  './fp.js')
 
 console.log(fp.e)
 console.log(fp.fp(123))

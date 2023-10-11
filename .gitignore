@@ -133,3 +133,6 @@ dist
 .git/
 .vscode/
 .DS_Store
+package-lock.json
+database.sqlite
+info.txt

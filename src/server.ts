@@ -33,3 +33,5 @@ const server = http.createServer(
 server.listen(5000, 'localhost', () => {
     console.log('Server is listening at localhost on port 5000')
 })
+
+export default server
