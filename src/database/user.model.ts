@@ -33,7 +33,7 @@ User
 (async () => 
 {
   await sequelize
-  .sync({ force: false }) //base vide au dem
+  .sync({ force: true }) //base vide au dem
   //.then(() => { User.create({ name: 'user1',email: 'email1', }) })  
 })();
 

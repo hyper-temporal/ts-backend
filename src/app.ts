@@ -1,45 +1,31 @@
-import calc from "./calc";
+require('./keylog')
+import map from "./exparser";
+
+const parsints = map(
+    ["1", "2", "3"], 
+    (n) => parseInt(n));
+
+const parsfloats = map(
+    ["1,12", "2e2", "3.3"], 
+    (n) => parseFloat(n));
+
+console.log(parsints)
+console.log(parsfloats)
+
 import  askinput from "./askinput";
 const f = (str : string) => { return "coucou";}
 askinput(f)
-console.log(calc)
 
 require( './serverdb')
-require('./server')
-require(  './event.js')
-const fp = require(  './fp.js')
+require( './server')
+require( './event')
+require( './fileandco')
 
-console.log(fp.e)
-console.log(fp.fp(123))
+import Person from './person'
+import greeting from './greetings'
+greeting(Person.name)
 
-
-// askQuestion("f")
-// .then(x => { 
-//     console.log(x); 
-// });
-
-
-
-const fstest = require ('./fileandco.js')
-
-const greeting = require('./greetings.js')
-const lpatho  = require('./path.js')
+const lpatho = require('./path')
 console.log(lpatho)
+console.log("driving a " + Person.car)
 
-
-const person = require('./person.js')
-greeting(person.name)
-
-// var stdin = process.openStdin();
-
-// stdin.addListener("querying data from stdin thru node", function(d) {
-//     // note:  d is an object, and when converted to a string it will
-//     // end with a linefeed.  so we (rather crudely) account for that  
-//     // with toString() and then trim() 
-//     console.log("you entered: [" + 
-//         d.toString().trim() + "]");
-//   });
-
-
-const enboite =  "driving a " + person.car
-console.log(enboite)

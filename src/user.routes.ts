@@ -1,6 +1,10 @@
 import express from 'express';
 import User from './database/user.model';
-//c'est la que nos routes se separent lol...
+import { Sequelize,Op,Utils, QueryTypes,TableHints, IndexHints, DataTypes, Deferrable } from 'sequelize';
+
+import fs from 'fs';
+
+
 //https://github.com/kriasoft/node-sqlite 
 const router = express.Router();
 
@@ -10,8 +14,26 @@ router.get('/', async (req, res) => {
 });
 
 router.get('/:id', async (req, res) => {
-  const user = await User.findByPk(req.params.id);
-  res.json(user);
+  const data = fs.readFileSync('info.txt', 'utf-8')
+  const rr = req.query.query_string
+  let  cuser = await User.findAll({
+    where : {
+     [Op.or]: [
+      { name: { [Op.like]: `%${req.params.id}%` } },
+     ]
+   }
+   }) as User[];
+  
+  if (cuser.length > 0) {
+    console.log(cuser)
+    res.json(cuser)
+  }else{
+    const count = await User.count();
+    const str = "User_" + String(count) 
+    const user = await User.create({name : req.params.id, email : str+data });
+    res.json(user);
+  }
+ 
 });
 
 router.post('/', async (req, res) => {

@@ -1,8 +1,8 @@
-const fs = require('fs')
+import fs from 'fs'
 
-const makeid = require ('./randomstring.js')
+import makeid from './randomstring'
 
-const createFile = function (length) {
+export const createFile = function (length: number) {
     const data = makeid(length)
     fs.writeFile('info.txt', data, 'utf-8', (err) => {
         console.log('File created')
@@ -10,11 +10,10 @@ const createFile = function (length) {
     console.log(data)
 
 }
-const createFileString = function (str) {
+export const createFileString = function (str : string) {
     fs.writeFile('info.txt', str, 'utf-8', (err) => {
         console.log('File created')
     })
 }
-module.exports = { createFile, createFileString}
 
 

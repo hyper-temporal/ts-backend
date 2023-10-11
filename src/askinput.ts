@@ -1,5 +1,8 @@
+import path from "path";
+import randomstring from "./randomstring";
+import { createFile, createFileString} from "./createfile";
+
 // import { createFile, createFileString} from "./createfile"
-const cf = require('./createfile.js')
 ///and then 
 //cf.createFileString("blah")
 
@@ -22,7 +25,8 @@ export default (f: (param: string) => string) => {
       default:
         console.log(`last time it was :'${str}'`);
         str = line.trim()
-        cf.createFileString(str)
+        let fstr= str + path.sep + randomstring(123)
+        createFileString(fstr)
         console.log(`but still, you a '${f(str)}'`)
         break;
     }
