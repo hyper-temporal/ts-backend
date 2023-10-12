@@ -1,3 +1,4 @@
+require('./streamsandco.js')
 require('./keylog')
 import map from "./exparser";
 
