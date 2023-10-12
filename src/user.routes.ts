@@ -1,10 +1,7 @@
 import express from 'express';
 import User from './database/user.model';
 import { Sequelize,Op,Utils, QueryTypes,TableHints, IndexHints, DataTypes, Deferrable } from 'sequelize';
-
 import fs from 'fs';
-
-
 //https://github.com/kriasoft/node-sqlite 
 const router = express.Router();
 
@@ -16,15 +13,17 @@ router.get('/', async (req, res) => {
 router.get('/:id', async (req, res) => {
   const data = fs.readFileSync('info.txt', 'utf-8')
   const rr = req.query.query_string
-  let  cuser = await User.findAll({
+  //ça donne une base
+  let  cuser = await User
+  .findOne({
     where : {
      [Op.or]: [
       { name: { [Op.like]: `%${req.params.id}%` } },
      ]
    }
-   }) as User[];
+   }) 
   
-  if (cuser.length > 0) {
+  if (cuser ) {
     console.log(cuser)
     res.json(cuser)
   }else{
