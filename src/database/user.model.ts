@@ -30,13 +30,8 @@ User
 .afterSave(()=> { console.log('db saved') });
 //if db not initialized ...
 
-(async () => 
-{
-  await sequelize
-  .sync({ force: true }) //base vide au dem
-  //.then(() => { User.create({ name: 'user1',email: 'email1', }) })  
-})();
 
-  
 
-export default User;
+
+
+export default User

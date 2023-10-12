@@ -14,7 +14,7 @@ console.log(parsfloats)
 
 
 import myEmitter from './event'
-import  askinput from "./askinput";
+import askinput from "./askinput";
 import path from "path";
 import randomstring from "./randomstring";
 import { createFile, createFileString} from "./createfile";
@@ -32,10 +32,6 @@ askinput(
 
     }
 )
-
-
-
-
 require( './serverdb')
 require( './server')
 require( './event')
