@@ -136,3 +136,4 @@ dist
 package-lock.json
 database.sqlite
 info.txt
+archive.tar.gz

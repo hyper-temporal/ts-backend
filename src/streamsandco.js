@@ -23,8 +23,6 @@ const uppercase = new Transform({
 });
 
 //ZIP
-
-
 async function run() {
   const ac = new AbortController();
   const signal = ac.signal;
@@ -39,11 +37,66 @@ async function run() {
 
 run().catch(console.error)
 
- function getTotal(...numbers) {
+
+
+const removeSpaces = new Transform({
+  transform(chunk, encoding, callback) {
+    callback(null, String(chunk).replace(' ', ''));
+  },
+});
+
+async function* toUpper(source) {
+  for await (const chunk of source) {
+    yield String(chunk).toUpperCase();
+  }
+}
+const { compose } = require("stream");
+const { finished } = require("stream/promises");
+const { convertToObject } = require('typescript');
+
+// Convert AsyncIterable into readable Duplex.
+const s1 = compose(async function*() {
+  yield 'Hello';
+  yield 'World';
+}());
+
+// Convert AsyncGenerator into transform Duplex.
+const s2 = compose(async function*(source) {
+  for await (const chunk of source) {
+    yield String(chunk).toUpperCase();
+  }
+});
+
+let res = '';
+
+// Convert AsyncFunction into writable Duplex.
+const s3 = compose(async function(source) {
+  for await (const chunk of source) {
+    res += chunk;
+  }
+});
+
+
+module.exports =  async ()=>{
+  await finished(compose(s1, s2, s3));
+  console.log(res); // prints 'HELLOWORLD' 
+}
+ 
+function CollecA2B(p, ...trucs) {
+  return  trucs.map( truc => (p(truc))); // no error
+}
+
+function getTotal(...numbers ) {
   let total = 0;
   numbers.forEach((num) => total += num);
   return total;
 }
- const t = getTotal(1,2,3,4,5,6,7,8,9)
-console.log(t)
 
+console.log(getTotal()); // 0
+console.log(getTotal(10, 20)); // 30
+console.log(getTotal(10, 20, 30)); // 60
+
+
+let arr1 = CollecA2B((num)=>{ return num + 1;},[0,1,2,3,4,5,6,7,8,9])
+
+console.log(arr1); // 0
