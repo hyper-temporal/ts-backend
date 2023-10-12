@@ -1,6 +1,7 @@
 {
 
   "compilerOptions": {
+    "strict": false,
     "module": "commonjs",
     "esModuleInterop": true,
     "target": "es6",
@@ -9,9 +10,6 @@
     "outDir": "dist"
   },
   "lib": ["es2015"],
-  
-  "ts-node": {
-    "swc": true
-  }
 }
+
 

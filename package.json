@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "start": "nodemon -e ts,js,ejs,html -w . -w public -w views -w routes -w models src/app.ts"
+    "start": "npx ts-node src/app.ts",
+    "debug": "nodemon -e ts,js,ejs,html -w . -w public -w views -w routes -w models src/app.ts"
   },
   "devDependencies": {
     "@types/express": "^4.17.19",
