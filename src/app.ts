@@ -1,3 +1,11 @@
+require( './literal')
+
+require( './serverdb')
+require( './server')
+require( './event')
+require( './fileandco')
+require( './records')
+
 
 import funny from  './streamsandco'
 funny()
@@ -35,10 +43,6 @@ askinput(
 
     }
 )
-require( './serverdb')
-require( './server')
-require( './event')
-require( './fileandco')
 
 import Person from './person'
 import greeting from './greetings'

@@ -1,6 +1,7 @@
 import { pipeline } from 'stream/promises';
 import zlib from 'zlib';
 import fs from "fs";
+import assert from 'assert';
 
 const fileStream= fs.createReadStream("./info.txt");
 
@@ -85,7 +86,9 @@ export default async ()=>{
 function CollecA2B<T,U>(p : (T)=>U, trucs : U[]) {
   return  trucs.map( truc => (p(truc))); // no error
 }
-
+function As2B<T,U>(p : (T)=>U, ...trucs) {
+  return  trucs.map( truc => (p(truc))); // no error
+}
 function getTotal(...numbers ) {
   let total = 0;
   numbers.forEach((num) => total += num);
@@ -98,5 +101,9 @@ console.log(getTotal(10, 20, 30)); // 60
 
 
 let arr1 = CollecA2B((num)=>{ return num + 1;},[0,1,2,3,4,5,6,7,8,9])
+let arr2 = As2B((num)=>{ return num + 1;},0,1,2,3,4,5,6,7,8,9)
 
+assert(arr1.toString() === arr2.toString())
 console.log(arr1); // 0
+console.log(arr2); // 0
+
