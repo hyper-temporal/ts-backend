@@ -1,4 +1,5 @@
-let funny = require('./streamsandco.js')
+
+import funny from  './streamsandco'
 funny()
 require('./keylog')
 import map from "./exparser";

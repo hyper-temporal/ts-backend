@@ -1,6 +1,6 @@
-const { pipeline } = require('stream/promises');
-const zlib = require('zlib');
-const fs = require("fs");
+import { pipeline } from 'stream/promises';
+import zlib from 'zlib';
+import fs from "fs";
 
 const fileStream= fs.createReadStream("./info.txt");
 
@@ -77,12 +77,12 @@ const s3 = compose(async function(source) {
 });
 
 
-module.exports =  async ()=>{
+export default async ()=>{
   await finished(compose(s1, s2, s3));
   console.log(res); // prints 'HELLOWORLD' 
 }
  
-function CollecA2B(p, ...trucs) {
+function CollecA2B<T,U>(p : (T)=>U, trucs : U[]) {
   return  trucs.map( truc => (p(truc))); // no error
 }
 
